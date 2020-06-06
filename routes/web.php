@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Création de la route boutique qui utilise le controller ProductController et la méthode index
+Route::get('/boutique', 'ProductController@index');
