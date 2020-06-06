@@ -162,31 +162,38 @@
                 <a class="blog-header-logo text-dark" href="#">Laravel Shop</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-               @include('partials.search')
+                @include('partials.search')
+
             </div>
         </div>
     </header>
 
+
+    <h2>Résultats de la recherche</h2>
+    @if(request()->input())
+        <h6>{{ $productsResearched->total() }} résulat(s) pour la recherche "{{ request()->q  }}"</h6>
+    @endif
+
     <div class="row mb-2">
 
-        @foreach($products as $product)
-        <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Informatique</strong>
-                    <h5 class="mb-0">{{ $product->title }}</h5>
-                    <div class="mb-1 text-muted">{{ $product->created_at->format('d/m/Y') }}</div>
-                    <p class="mb-auto">{{ $product->subtitle }}</p>
-                    <p class="mb-auto">{{ $product->getComputedPrice() }} €</p>
-                    <a href="#" class="stretched-link btn btn-dark">Détails produit</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        @foreach($productsResearched as $product)
+
+            <div class="col-md-6">
+                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">Informatique</strong>
+                        <h5 class="mb-0">{{ $product->title }}</h5>
+                        <div class="mb-1 text-muted">{{ $product->created_at->format('d/m/Y') }}</div>
+                        <p class="mb-auto">{{ $product->subtitle }}</p>
+                        <p class="mb-auto">{{ $product->getComputedPrice() }} €</p>
+                        <a href="#" class="stretched-link btn btn-dark">Détails produit</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    </div>
                 </div>
             </div>
-        </div>
-            @endforeach
-
+        @endforeach
     </div>
 </div>
 

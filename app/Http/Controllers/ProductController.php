@@ -19,4 +19,24 @@ class ProductController extends Controller
             'products', $products
         );
     }
+
+
+    public function search()
+    {
+
+        // on récupère la recherche
+        $q = request()->input('q');
+
+       //dd($q);
+
+        // recherche sur les titres des produits
+       $productsResearched =  Product::where('title', 'like', "%$q%")
+           ->paginate(5);
+
+       // on passe les résultats dans la vue
+       return view('product.search')->with(
+               'productsResearched', $productsResearched
+       );
+
+    }
 }

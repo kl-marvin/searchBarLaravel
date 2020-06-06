@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
         // création de 30 produits aléatoire avec Faker pour peupler la bd
         for($i=0; $i < 30; $i++){
             Product::create([
-                'title' => $faker->sentence(3),
+                'title' => $faker->word(),
                 'slug' => $faker->slug,
                 'subtitle' => $faker->sentence(5),
                 'description' => $faker->text(45),

@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 // Création de la route boutique qui utilise le controller ProductController et la méthode index
 Route::get('/boutique', 'ProductController@index');
+
+
+// Création de la route de recherche
+Route::get('/search', 'ProductController@search')->name('products.search');
