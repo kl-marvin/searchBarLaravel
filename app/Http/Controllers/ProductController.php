@@ -24,6 +24,10 @@ class ProductController extends Controller
     public function search()
     {
 
+        request()->validate([
+            'q' => 'required|min:2'
+        ]);
+
         // on récupère la recherche
         $q = request()->input('q');
 
@@ -33,8 +37,10 @@ class ProductController extends Controller
        $productsResearched =  Product::where('title', 'like', "%$q%")
            ->paginate(5);
 
+
        // on passe les résultats dans la vue
-       return view('product.search')->with(
+
+        return view('product.search')->with(
                'productsResearched', $productsResearched
        );
 

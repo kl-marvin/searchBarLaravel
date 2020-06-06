@@ -169,6 +169,7 @@
     </header>
 
 
+
     <h2>Résultats de la recherche</h2>
     @if(request()->input())
         <h6>{{ $productsResearched->total() }} résulat(s) pour la recherche "{{ request()->q  }}"</h6>
